@@ -1,3 +1,6 @@
+"""This file is used to register the Question model with the admin site."""
 from django.contrib import admin
 
-# Register your models here.
+from .models import Question
+
+admin.site.register(Question)
