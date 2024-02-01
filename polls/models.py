@@ -14,8 +14,14 @@ class Question(models.Model):
         return str(self.question_text)
 
     def was_published_recently(self):
-        """TODO: Add docstring"""
-        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+        """Check if the question was published recently.
+        If the question was published within the last day, return True.
+
+        :return: The result of the check.
+        :rtype: bool
+        """
+        now = timezone.now()
+        return now - datetime.timedelta(days=1) <= self.pub_date <= now
 
     question_text = models.CharField(max_length=200)
     pub_date = models.DateTimeField("date published")
